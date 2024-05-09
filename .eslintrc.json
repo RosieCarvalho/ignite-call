@@ -1,9 +1,21 @@
 {
-  "extends": [
-    "@rocketseat/eslint-config/react",
-    "next/core-web-vitals"
-  ],
+  "extends": "@rocketseat/eslint-config/react",
   "rules": {
-    "camelcase": "off"
+    "camelcase": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto",
+        "arrowParens": "always",
+        "printWidth": 80,
+        "singleQuote": true,
+        "trailingComma": "all",
+        "semi": false,
+        "tabWidth": 2
+      }
+    ],
+    "@typescript-eslint/adjacent-overload-signatures": "error",
+    "no-undef": "off"
   }
 }

@@ -141,3 +141,6 @@ Esse projeto realiza integração social com o google para internalizar o google
 
 - para hospedar: vercel
 - instal: https://vercel.com/docs/cli
+- subir projeto: bastar subir no github e importar na vercel
+- configurações
+  - variaveis ambientes: pegar o nome e o valor que estão .env e add em Environment Variables
