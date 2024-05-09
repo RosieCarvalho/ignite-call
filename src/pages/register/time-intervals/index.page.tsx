@@ -20,10 +20,11 @@ import {
   IntervalItem,
 } from './styles'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { convertTimeStringToMinutes } from '@/utils/convert-time-string-to-minutes'
-import { api } from '@/lib/axios'
+
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
+import { api } from '../../../lib/axios'
+import { convertTimeStringToMinutes } from '../../../utils/convert-time-string-to-minutes'
 
 const timeIntervalsFormSchema = z.object({
   intervals: z
@@ -148,6 +149,9 @@ export default function TimeIntervals() {
                   </IntervalDay>
                   <IntervalInputs>
                     <TextInput
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                      crossOrigin={undefined}
                       size="sm"
                       type="time"
                       step={60}
@@ -155,6 +159,9 @@ export default function TimeIntervals() {
                       {...register(`intervals.${index}.startTime`)}
                     />
                     <TextInput
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                      crossOrigin={undefined}
                       size="sm"
                       type="time"
                       step={60}
@@ -167,7 +174,7 @@ export default function TimeIntervals() {
             })}
           </IntervalContainer>
           {errors.intervals && (
-            <FormError size="sm">{errors.intervals.root.message}</FormError>
+            <FormError size="sm">{errors.intervals?.root?.message}</FormError>
           )}
 
           <Button type="submit" disabled={isSubmitting}>

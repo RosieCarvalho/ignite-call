@@ -7,7 +7,7 @@ import { z } from 'zod'
 import { ConfirmForm, FormActions, FormError, FormHeader } from './styles'
 import dayjs from 'dayjs'
 import { useRouter } from 'next/router'
-import { api } from '@/lib/axios'
+import { api } from '../../../../../lib/axios'
 
 const confirmFormSchema = z.object({
   name: z.string().min(3, { message: 'O nome precisa no mínimo 3 caracteres' }),
@@ -67,13 +67,22 @@ export function ConfirmStep({
 
       <label>
         <Text size="sm">Nome completo</Text>
-        <TextInput placeholder="Seu nome" {...register('name')} />
+        <TextInput
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+          crossOrigin={undefined}
+          placeholder="Seu nome"
+          {...register('name')}
+        />
         {errors.name && <FormError size="sm">{errors.name.message}</FormError>}
       </label>
 
       <label>
         <Text size="sm">Endereço de e-mail</Text>
         <TextInput
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+          crossOrigin={undefined}
           type="email"
           placeholder="johndoe@example.com"
           {...register('email')}

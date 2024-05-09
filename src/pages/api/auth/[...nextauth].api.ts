@@ -2,7 +2,7 @@ import NextAuth, { NextAuthOptions } from 'next-auth'
 import GoogleProvider, { GoogleProfile } from 'next-auth/providers/google'
 
 import { NextApiRequest, NextApiResponse, NextPageContext } from 'next'
-import { PrismaAdapter } from '@/lib/auth/prima-adapter'
+import { PrismaAdapter } from '../../../lib/auth/prima-adapter'
 
 export function buildNextAuthOptions(
   req: NextApiRequest | NextPageContext['req'],
