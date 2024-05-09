@@ -2,10 +2,18 @@
 
 Esse projeto realiza integração social com o google para internalizar o google calendar. Todo o back-end é feito no proprio projeto usando as apis do next. o Prisma é usado para conexão de banco de dados.
 
+## uteis
+
+- Uso de hook form bem completo em: src\pages\register\time-intervals
+- função para retornar dias das semanas: src\utils
+- função para retornar hora em minutos: src\utils
+- usar dados da session no back-end do next: unstable_getServerSession
+
 ## Bibliotecas
 
 - React-hook-form
-  - validação de form com zod
+  - validação de form e uso de transformação com zod
+  -
 
 ```bash
    npm i react-hook-form @hookform/resolvers zod
@@ -55,13 +63,23 @@ Esse projeto realiza integração social com o google para internalizar o google
       npm i @types/cookie -D
       ```
 
+- dayjs
+
+  - para trabalhar com datas
+
+- react query
+
+```bash
+ npm i @tanstack/react-query
+```
+
 ## autenticação social
 
-- oAuth:
+- **oAuth**
 
   - protocolo de autenticação usando next-auth
 
-- autenticação com google
+- **Autenticação com google**
 
   passo 1: configuração no console.cloud google
 
@@ -78,8 +96,48 @@ Esse projeto realiza integração social com o google para internalizar o google
   - escopos
     - é necessario para definir algumas permissões
 
-- salvando informações do login no banco de dados (PRISMA)
+- **Salvando informações do login no banco de dados (PRISMA)**
+
   - https://authjs.dev/getting-started/adapters/prisma
   - adapters: é um ponto de conexão entre o banco e a aplicação(next-auth).
     - podemos criar nossos proprios adapters reescrevendo as funções do next-auth e assim conectar com qualquer banco de dados. Neste projeto conectamos com o prisma
   - neste projeto criamos o nosso proprio adapters: src\lib\auth\prima-adapter.ts
+
+- **Integração com API DA GOOGLE**
+  - instalar:
+    ```bash
+    npm i googleapis
+    ```
+  - configuração: google.ts
+    - aqui está a lógica de conexão com api do google
+  - inserindo eventos no calendário do google: schedule.api
+
+## docker
+
+- gerar novo container
+
+  -docker run --name mysql -e MYSQL_ROOT_PASSWORD=docker -p 3306:3306 mysql:latest
+  -docker run --name postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+
+- rodar o container
+  -docker start -nome do banco- (no caso aqui é mysql)
+
+## SEO
+
+- doc: https://github.com/garmeeh/next-seo?tab=readme-ov-file#usage
+- instalar: npm install next-seo
+- uso: #seo
+
+## DEPLOY
+
+**BANCO DE DADOS**
+
+- para hospedar : https://neon.tech/
+  -mudando o projeto para outro banco: https://efficient-sloth-d85.notion.site/Ignite-Call-Postgres-dev-e-prod-bd105befe0ab411cb7074aad72819613
+
+  - preparar prisma para subir: npx prisma migrate deploy
+
+  **APLICACAÇÃO**
+
+- para hospedar: vercel
+- instal: https://vercel.com/docs/cli
